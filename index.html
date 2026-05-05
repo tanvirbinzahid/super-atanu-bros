@@ -71,19 +71,9 @@ canvas{display:block;image-rendering:pixelated;}
 #controls{color:#555;font-size:0.65rem;margin-top:5px;text-align:center;}
 
 
-/* gameWrapper: handles portrait rotation on mobile */
-#gameWrapper{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  width:100%;
-  height:100%;
-}
 </style>
 </head>
 <body>
-<div id="gameWrapper">
 <div id="wrap">
   <div id="hud">
     <span id="hudCourse">📝 ENG — Prof. Atanu</span>
@@ -1256,46 +1246,47 @@ function loop(ts){
 // ─── Responsive Scaling ──────────────────────────────────
 function scaleCanvas(){
   const wrap=document.getElementById('wrap');
-  const gw=document.getElementById('gameWrapper');
   const mc=document.getElementById('mobileControls');
   const vw=window.innerWidth, vh=window.innerHeight;
   const isMobile=(navigator.maxTouchPoints>0);
   const isPortrait=(vh>vw);
 
   if(isMobile && isPortrait){
-    // Portrait phone: rotate gameWrapper -90deg so landscape game fills screen
-    // After rotation: vw becomes height, vh becomes width for the game
-    const scaleX=vh/800;  // game is 800 wide → fits screen height
-    const scaleY=vw/484;  // game is 484 tall (440+44hud) → fits screen width
-    const scale=Math.min(scaleX,scaleY);
-    gw.style.cssText=`
-      position:fixed;
-      top:0;left:0;
-      width:${vh}px;
-      height:${vw}px;
-      transform:rotate(-90deg) translateY(-${vh}px);
-      transform-origin:top left;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      background:#0a0a1a;
-    `;
-    wrap.style.transform=`scale(${scale})`;
-    wrap.style.transformOrigin='top center';
-    wrap.style.marginBottom=`${(484)*(scale-1)}px`;
-    mc.style.position='absolute';
+    const btnH=130;
+    const availH=vh-btnH;
+    // After -90deg: 800 becomes visual height, 484 becomes visual width
+    const scale=Math.min(vw/484, availH/800);
+    const visualW=484*scale;  // fits portrait width
+    const visualH=800*scale;  // fits available height
+
+    // Center the rotated element
+    const cx=vw/2;
+    const cy=availH/2;
+
+    // transformOrigin = center of original (unscaled) element
+    // original center = (400, 242)
+    // place top-left so that after rotation center lands at (cx,cy)
+    wrap.style.position='fixed';
+    wrap.style.left=(cx - 242*scale)+'px';
+    wrap.style.top=(cy - 400*scale)+'px';
+    wrap.style.transformOrigin='top left';
+    wrap.style.transform='scale('+scale+') rotate(-90deg) translateX(-484px)';
+    wrap.style.marginBottom='0';
+    wrap.style.zIndex='1';
+
+    mc.style.position='fixed';
     mc.style.bottom='0';
     mc.style.left='0';
     mc.style.right='0';
+    mc.style.height=btnH+'px';
+    mc.style.display='block';
   } else {
-    // Landscape / desktop: normal scaling
-    gw.style.cssText='';
-    const maxW=Math.min(vw-6,800);
-    const scale=maxW/800;
-    wrap.style.transform=`scale(${scale})`;
+    wrap.style.cssText='';
+    const scale=Math.min((vw-6)/800, 1);
+    wrap.style.transform='scale('+scale+')';
     wrap.style.transformOrigin='top center';
-    wrap.style.marginBottom=`${(484)*(scale-1)}px`;
+    wrap.style.marginBottom=((484)*(scale-1))+'px';
+    mc.style.cssText='';
   }
 }
 window.addEventListener('resize',scaleCanvas);

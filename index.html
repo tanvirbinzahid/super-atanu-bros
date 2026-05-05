@@ -72,12 +72,23 @@ canvas{display:block;image-rendering:pixelated;}
 </style>
 </head>
 <body>
-<div id="rotateOverlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#0a0a1a;z-index:9999;flex-direction:column;align-items:center;justify-content:center;gap:20px;">
-  <div style="font-size:64px;animation:spin 2s linear infinite;">📱</div>
-  <div style="color:#ffd700;font-family:'Press Start 2P',monospace;font-size:12px;text-align:center;line-height:2;">Please rotate<br>your phone<br>to landscape!</div>
-</div>
+
 <style>
 @keyframes spin{0%{transform:rotate(0deg);}50%{transform:rotate(90deg);}100%{transform:rotate(0deg);}}
+
+/* Force landscape on portrait mobile */
+@media (pointer:coarse) and (max-aspect-ratio:1/1){
+  html{
+    transform:rotate(-90deg);
+    transform-origin:left top;
+    width:100vh;
+    height:100vw;
+    overflow:hidden;
+    position:absolute;
+    top:100%;
+    left:0;
+  }
+}
 </style>
 <div id="wrap">
   <div id="hud">
@@ -1253,8 +1264,6 @@ function scaleCanvas(){
   const wrap=document.getElementById('wrap');
   const vw=window.innerWidth,vh=window.innerHeight;
   const isPortrait=vh>vw;
-  const rotateOverlay=document.getElementById('rotateOverlay');
-  if(rotateOverlay){rotateOverlay.style.display=(navigator.maxTouchPoints>0&&isPortrait)?'flex':'none';}
   const maxW=Math.min(vw-6,800);
   const scale=maxW/800;
   wrap.style.transform='scale('+scale+')';

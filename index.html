@@ -287,141 +287,135 @@
     // ════════════════════════════════════════════════════════
     //  LEVEL DEFINITIONS
     // ════════════════════════════════════════════════════════
-    const _ = 0;
+        const _ = 0;
     const LEVELS = [
-      // ── LEVEL 1: Where the Mind is Without Fear (Tagore) ──
+      // LEVEL 1: Where the mind is without fear (Tagore)
       {
-        title: 'Where the Mind is Without Fear',
-        author: 'Rabindranath Tagore',
-        year: '1910',
-        courseNote: 'Studied in Prof. Atanu\'s ENG Class',
+        title: 'Where the Mind is Without Fear', author: 'Rabindranath Tagore', year: '1910',
+        courseNote: "Studied in Prof. Atanu's ENG Class",
         quote: '"Where the mind is without fear and the head is held high..."',
-        theme: 'tagore',
-        bgTop: '#ff9a3c', bgBottom: '#ffd580',
+        theme: 'tagore', bgTop: '#ff9a3c', bgBottom: '#ffd580',
         collectWord: ['FREEDOM', 'REASON', 'KNOWLEDGE', 'FEARLESS', 'LIGHT'],
-        collectColor: '#ffd700',
-        collectEmoji: '🕯️',
-        deathMsg: 'Your mind was with fear... Try again.',
-        stompMsg: '"...into ever-widening thought and action"',
-        tiles: [
-          [_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _],
-          [_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _],
-          [_, _, _, _, _, 3, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _],
-          [_, _, _, _, _, _, _, _, 2, 2, _, _, _, _, _, 3, _, 3, _, _, _, _, _, _],
-          [_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _],
-          [_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 2, 2, 2, _],
-          [_, _, _, _, _, _, _, _, _, _, _, 5, 6, _, _, _, _, _, _, _, _, _, _, _],
-          [_, _, _, _, _, _, _, _, _, _, _, 7, 8, _, _, _, _, _, _, _, _, _, _, _],
-          [1, 1, 1, 1, _, _, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, _, _, 1, 1, 1, 1],
-          [1, 1, 1, 1, _, _, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, _, _, 1, 1, 1, 1],
-          [1, 1, 1, 1, _, _, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, _, _, 1, 1, 1, 1],
-        ],
+        collectColor: '#ffd700', collectEmoji: '🕯️',
+        deathMsg: 'Your mind was with fear... Try again.', stompMsg: '"...into ever-widening thought and action"',
+        tiles: [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,3,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,2,2,_,_,_,_,_,3,_,3,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,2,2,2,_],[_,_,_,_,_,_,_,_,_,_,_,5,6,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,7,8,_,_,_,_,_,_,_,_,_,_,_],[1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1,_,_,1,1,1,1],[1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1,_,_,1,1,1,1],[1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1,_,_,1,1,1,1]],
         enemies: [{ col: 6, row: 8, type: 'fear' }, { col: 10, row: 8, type: 'fear' }, { col: 14, row: 8, type: 'fear' }, { col: 20, row: 8, type: 'fear' }],
         coins: [{ col: 5, row: 2 }, { col: 8, row: 3 }, { col: 15, row: 3 }, { col: 17, row: 3 }, { col: 21, row: 5 }],
-        playerStart: { x: 60, y: 270 },
-        enemyType: 'Fear Demons',
-        enemyDesc: 'Shadowy fears — stomp them with knowledge!'
+        playerStart: { x: 60, y: 270 }, enemyType: 'Fear Demons', enemyDesc: 'Shadowy fears — stomp them with knowledge!'
       },
-      // ── LEVEL 2: Trumpet Player + Theme for English B (Hughes) ──
+      // LEVEL 2: Trumpet Player (Hughes)
       {
-        title: 'Trumpet Player / Theme for English B',
-        author: 'Langston Hughes',
-        year: '1926 / 1951',
-        courseNote: 'Studied in Prof. Atanu\'s ENG Class',
-        quote: '"I hear you, hear me — two of us — you, me, talk on this page."',
-        theme: 'hughes',
-        bgTop: '#1a0a2e', bgBottom: '#2d1b4e',
-        collectWord: ['JAZZ', 'HARLEM', 'IDENTITY', 'RHYTHM', 'BLUES', 'DREAM'],
-        collectColor: '#ff9944',
-        collectEmoji: '🎵',
-        deathMsg: '"What happens to a dream deferred?" — Keep trying!',
-        stompMsg: '"I, too, sing America!"',
-        tiles: [
-          [_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _],
-          [_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _],
-          [_, _, 2, 3, 2, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _],
-          [_, _, _, _, _, _, _, _, _, _, 2, 2, 2, _, _, _, _, _, _, _, _, _, _, _],
-          [_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _],
-          [_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 3, _, _, _, _, _, _, _, _],
-          [_, _, _, _, _, _, _, _, 5, 6, _, _, _, _, _, _, _, _, 5, 6, _, _, _, _],
-          [_, _, _, _, _, _, _, _, 7, 8, _, _, _, _, _, _, _, _, 7, 8, _, _, _, _],
-          [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, _, _, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-          [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, _, _, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-          [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, _, _, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        ],
+        title: 'Trumpet Player', author: 'Langston Hughes', year: '1947',
+        courseNote: "Studied in Prof. Atanu's ENG Class",
+        quote: '"The Negro / With the trumpet at his lips / Has dark moons of weariness"',
+        theme: 'hughes', bgTop: '#1a0a2e', bgBottom: '#2d1b4e',
+        collectWord: ['JAZZ', 'MELODY', 'SOUL', 'BLUES', 'RHYTHM'],
+        collectColor: '#ff9944', collectEmoji: '🎺',
+        deathMsg: '"But softly / As the tune comes from his throat..."', stompMsg: '"Desire / That is longing for the moon"',
+        tiles: [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,2,3,2,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,2,2,2,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,3,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,5,6,_,_,_,_,_,_,_,_,5,6,_,_,_,_],[_,_,_,_,_,_,_,_,7,8,_,_,_,_,_,_,_,_,7,8,_,_,_,_],[1,1,1,1,1,1,1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1]],
         enemies: [{ col: 5, row: 8, type: 'heckler' }, { col: 9, row: 8, type: 'heckler' }, { col: 13, row: 8, type: 'heckler' }, { col: 17, row: 8, type: 'heckler' }, { col: 21, row: 8, type: 'heckler' }],
         coins: [{ col: 3, row: 2 }, { col: 10, row: 3 }, { col: 15, row: 5 }, { col: 12, row: 3 }, { col: 20, row: 5 }],
-        playerStart: { x: 60, y: 270 },
-        enemyType: 'Jazz Hecklers',
-        enemyDesc: 'Bowtie-wearing doubters — stomp to silence them!'
+        playerStart: { x: 60, y: 270 }, enemyType: 'Rhythm Breakers', enemyDesc: 'Bowtie-wearing doubters — stomp to silence them!'
       },
-      // ── LEVEL 3: The Yellow Wallpaper (Gilman) ──
+      // LEVEL 3: Theme for English B (Hughes)
       {
-        title: 'The Yellow Wallpaper',
-        author: 'Charlotte Perkins Gilman',
-        year: '1892',
-        courseNote: 'Studied in Prof. Atanu\'s ENG Class',
-        quote: '"I am getting angry enough to do something desperate."',
-        theme: 'wallpaper',
-        bgTop: '#b8a000', bgBottom: '#8a7200',
-        collectWord: ['MADNESS', 'FREEDOM', 'IDENTITY', 'PATTERN', 'ESCAPE', 'VOICE'],
-        collectColor: '#ffe066',
-        collectEmoji: '📜',
-        deathMsg: 'The wallpaper closes in... "I am getting angry enough..."',
-        stompMsg: '"I\'ve got out at last!" — The woman escapes!',
-        tiles: [
-          [_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _],
-          [_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _],
-          [2, 2, _, _, _, _, _, 3, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _],
-          [_, _, _, _, _, _, _, _, _, _, _, 2, 2, 2, _, _, _, _, _, _, _, _, _, _],
-          [_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _],
-          [_, _, _, 2, 2, 2, _, _, _, _, _, _, _, _, _, _, 2, 2, _, _, _, _, _, _],
-          [_, _, _, _, _, _, _, _, _, _, 5, 6, _, _, _, _, _, _, _, _, _, _, _, _],
-          [_, _, _, _, _, _, _, _, _, _, 7, 8, _, _, _, _, _, _, _, _, 5, 6, _, _],
-          [1, 1, 1, 1, 1, 1, _, _, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-          [1, 1, 1, 1, 1, 1, _, _, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-          [1, 1, 1, 1, 1, 1, _, _, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        ],
+        title: 'Theme for English B', author: 'Langston Hughes', year: '1951',
+        courseNote: "Studied in Prof. Atanu's ENG Class",
+        quote: '"I guess being colored doesn\'t make me not like the same things other folks like who are other races."',
+        theme: 'hughes', bgTop: '#3a2a1e', bgBottom: '#5d4b3e',
+        collectWord: ['TRUTH', 'IDENTITY', 'HARLEM', 'PAGE', 'AMERICA'],
+        collectColor: '#eebd88', collectEmoji: '🖋️',
+        deathMsg: '"You are white—yet a part of me, as I am a part of you."', stompMsg: '"This is my page for English B."',
+        tiles: [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,3,_,_,_,_,_,_,_,_,_,_,_,_,_,_,3,_,_,_,_],[_,_,_,_,_,_,_,_,2,2,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,2,2,2,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,5,6,_,_,_,_,_,_,_,_,5,6,_],[_,_,_,_,_,_,_,_,_,_,_,7,8,_,_,_,_,_,_,_,_,7,8,_],[1,1,1,1,1,1,1,1,1,1,1,1,1,_,_,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,1,1,1,1,_,_,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,1,1,1,1,_,_,1,1,1,1,1,1,1,1,1]],
+        enemies: [{ col: 6, row: 8, type: 'heckler' }, { col: 10, row: 8, type: 'heckler' }, { col: 16, row: 8, type: 'heckler' }, { col: 20, row: 8, type: 'heckler' }],
+        coins: [{ col: 4, row: 2 }, { col: 19, row: 2 }, { col: 8, row: 3 }, { col: 13, row: 4 }, { col: 15, row: 4 }],
+        playerStart: { x: 60, y: 270 }, enemyType: 'Blank Pages', enemyDesc: 'Fill the blank pages with truth!'
+      },
+      // LEVEL 4: Imagine (Lennon)
+      {
+        title: 'Imagine', author: 'John Lennon', year: '1971',
+        courseNote: "Studied in Prof. Atanu's ENG Class",
+        quote: '"You may say I\'m a dreamer, but I\'m not the only one."',
+        theme: 'tagore', bgTop: '#87CEEB', bgBottom: '#E0F6FF',
+        collectWord: ['PEACE', 'DREAMER', 'WORLD', 'ONE', 'SHARE'],
+        collectColor: '#ffffff', collectEmoji: '🕊️',
+        deathMsg: '"Imagine there\'s no heaven... It\'s easy if you try."', stompMsg: '"And the world will live as one!"',
+        tiles: [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,3,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,2,2,_,_,_,_,_,3,_,3,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,2,2,2,_],[_,_,_,_,_,_,_,_,_,_,_,5,6,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,7,8,_,_,_,_,_,_,_,_,_,_,_],[1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1,_,_,1,1,1,1],[1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1,_,_,1,1,1,1],[1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1,_,_,1,1,1,1]],
+        enemies: [{ col: 6, row: 8, type: 'fear' }, { col: 10, row: 8, type: 'fear' }, { col: 14, row: 8, type: 'fear' }, { col: 20, row: 8, type: 'fear' }],
+        coins: [{ col: 5, row: 2 }, { col: 8, row: 3 }, { col: 15, row: 3 }, { col: 17, row: 3 }, { col: 21, row: 5 }],
+        playerStart: { x: 60, y: 270 }, enemyType: 'Borders & Boundaries', enemyDesc: 'Imagine no possessions!'
+      },
+      // LEVEL 5: September on Jessore Road (Ginsberg)
+      {
+        title: 'September on Jessore Road', author: 'Allen Ginsberg', year: '1971',
+        courseNote: "Studied in Prof. Atanu's ENG Class",
+        quote: '"Millions of souls nineteen seventy one / homeless on Jessore road under grey sun."',
+        theme: 'wallpaper', bgTop: '#4a4a5a', bgBottom: '#2d2d3d',
+        collectWord: ['SORROW', 'TEARS', 'ROAD', 'MILLIONS', 'RAIN'],
+        collectColor: '#88aaff', collectEmoji: '🌧️',
+        deathMsg: '"Where are the helicopters of U.S. AID?"', stompMsg: '"Millions of babies in pain..."',
+        tiles: [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[2,2,_,_,_,_,_,3,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,2,2,2,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,2,2,2,_,_,_,_,_,_,_,_,_,_,2,2,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,5,6,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,7,8,_,_,_,_,_,_,_,_,5,6,_,_],[1,1,1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]],
         enemies: [{ col: 4, row: 8, type: 'creeper' }, { col: 8, row: 8, type: 'creeper' }, { col: 13, row: 8, type: 'creeper' }, { col: 17, row: 8, type: 'creeper' }, { col: 21, row: 8, type: 'creeper' }],
         coins: [{ col: 7, row: 2 }, { col: 11, row: 3 }, { col: 16, row: 5 }, { col: 3, row: 5 }, { col: 20, row: 5 }],
-        playerStart: { x: 60, y: 270 },
-        enemyType: 'Creeping Women',
-        enemyDesc: 'They crawl from the wallpaper — stomp them free!'
+        playerStart: { x: 60, y: 270 }, enemyType: 'Rain Storms', enemyDesc: 'Grey clouds bringing sorrow.'
       },
-      // ── LEVEL 4: Do Not Go Gentle (Dylan Thomas) ──
+      // LEVEL 6: Lady Lazarus (Plath)
       {
-        title: 'Do Not Go Gentle into That Good Night',
-        author: 'Dylan Thomas',
-        year: '1951',
-        courseNote: 'Studied in Prof. Atanu\'s ENG Class',
+        title: 'Lady Lazarus', author: 'Sylvia Plath', year: '1962',
+        courseNote: "Studied in Prof. Atanu's ENG Class",
+        quote: '"Out of the ash / I rise with my red hair / And I eat men like air."',
+        theme: 'dylan', bgTop: '#1a0000', bgBottom: '#3d0000',
+        collectWord: ['RISE', 'FIRE', 'ASH', 'PHOENIX', 'REBIRTH', 'TRIUMPH'],
+        collectColor: '#ff6600', collectEmoji: '🔥',
+        deathMsg: '"Dying is an art." — Try again!', stompMsg: '"Out of the ash, I rise!"',
+        tiles: [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,3,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,3,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,2,2,2,_,_,_,_,_,_,2,2,2,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,2,2,_,_,_,_,_,_,_,_,2,2,_,_,_,_,_,_,2,2,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[1,1,1,_,_,1,1,1,1,_,_,1,1,1,1,_,_,1,1,1,1,_,_,1],[1,1,1,_,_,1,1,1,1,_,_,1,1,1,1,_,_,1,1,1,1,_,_,1],[1,1,1,_,_,1,1,1,1,_,_,1,1,1,1,_,_,1,1,1,1,_,_,1]],
+        enemies: [{ col: 4, row: 8, type: 'fear' }, { col: 8, row: 8, type: 'fear' }, { col: 12, row: 8, type: 'fear' }, { col: 17, row: 8, type: 'fear' }],
+        coins: [{ col: 3, row: 1 }, { col: 21, row: 1 }, { col: 6, row: 3 }, { col: 15, row: 3 }, { col: 12, row: 5 }],
+        playerStart: { x: 60, y: 220 }, enemyType: 'Ash Men', enemyDesc: 'Rise from the ash!'
+      },
+      // LEVEL 7: Do not go gentle into that good night (Dylan Thomas)
+      {
+        title: 'Do Not Go Gentle into That Good Night', author: 'Dylan Thomas', year: '1951',
+        courseNote: "Studied in Prof. Atanu's ENG Class",
         quote: '"Rage, rage against the dying of the light."',
-        theme: 'dylan',
-        bgTop: '#0a0010', bgBottom: '#1a0030',
+        theme: 'dylan', bgTop: '#0a0010', bgBottom: '#1a0030',
         collectWord: ['RAGE', 'LIGHT', 'RESIST', 'FIRE', 'FIERCE', 'WILD'],
-        collectColor: '#ff6633',
-        collectEmoji: '⚡',
-        deathMsg: '"You went gentle into that good night." — RAGE MORE!',
-        stompMsg: '"Do not go gentle into that good night!"',
-        tiles: [
-          [_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _],
-          [_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _],
-          [_, _, _, 3, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 3, _, _],
-          [_, _, _, _, _, _, _, 2, 2, _, _, _, _, _, _, _, 2, 2, _, _, _, _, _, _],
-          [_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _],
-          [_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _],
-          [_, _, _, _, _, _, 2, 2, 2, _, _, _, _, 2, 2, 2, _, _, _, _, _, _, _, _],
-          [_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 5, 6, _, _],
-          [1, 1, 1, _, _, 1, 1, 1, 1, 1, _, _, 1, 1, 1, 1, 1, _, _, 1, 1, 1, 1, 1],
-          [1, 1, 1, _, _, 1, 1, 1, 1, 1, _, _, 1, 1, 1, 1, 1, _, _, 1, 1, 1, 1, 1],
-          [1, 1, 1, _, _, 1, 1, 1, 1, 1, _, _, 1, 1, 1, 1, 1, _, _, 1, 1, 1, 1, 1],
-        ],
+        collectColor: '#ff6633', collectEmoji: '⚡',
+        deathMsg: '"You went gentle into that good night." — RAGE MORE!', stompMsg: '"Do not go gentle into that good night!"',
+        tiles: [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,3,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,3,_,_],[_,_,_,_,_,_,_,2,2,_,_,_,_,_,_,_,2,2,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,2,2,2,_,_,_,_,2,2,2,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,5,6,_,_],[1,1,1,_,_,1,1,1,1,1,_,_,1,1,1,1,1,_,_,1,1,1,1,1],[1,1,1,_,_,1,1,1,1,1,_,_,1,1,1,1,1,_,_,1,1,1,1,1],[1,1,1,_,_,1,1,1,1,1,_,_,1,1,1,1,1,_,_,1,1,1,1,1]],
         enemies: [{ col: 5, row: 8, type: 'night' }, { col: 9, row: 8, type: 'night' }, { col: 13, row: 8, type: 'night' }, { col: 17, row: 8, type: 'night' }, { col: 21, row: 8, type: 'night' }],
         coins: [{ col: 3, row: 2 }, { col: 21, row: 2 }, { col: 7, row: 3 }, { col: 16, row: 3 }, { col: 20, row: 5 }],
-        playerStart: { x: 60, y: 270 },
-        enemyType: 'The Night',
-        enemyDesc: 'Darkness given form — rage against it!'
-      }
-      ,
+        playerStart: { x: 60, y: 270 }, enemyType: 'The Night', enemyDesc: 'Darkness given form — rage against it!'
+      },
+      // LEVEL 8: The Yellow Wallpaper (Gilman)
+      {
+        title: 'The Yellow Wallpaper', author: 'Charlotte Perkins Gilman', year: '1892',
+        courseNote: "Studied in Prof. Atanu's ENG Class",
+        quote: '"I am getting angry enough to do something desperate."',
+        theme: 'wallpaper', bgTop: '#b8a000', bgBottom: '#8a7200',
+        collectWord: ['MADNESS', 'FREEDOM', 'IDENTITY', 'PATTERN', 'ESCAPE', 'VOICE'],
+        collectColor: '#ffe066', collectEmoji: '📜',
+        deathMsg: 'The wallpaper closes in... "I am getting angry enough..."', stompMsg: '"I\'ve got out at last!" — The woman escapes!',
+        tiles: [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[2,2,_,_,_,_,_,3,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,2,2,2,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,2,2,2,_,_,_,_,_,_,_,_,_,_,2,2,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,5,6,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,7,8,_,_,_,_,_,_,_,_,5,6,_,_],[1,1,1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]],
+        enemies: [{ col: 4, row: 8, type: 'creeper' }, { col: 8, row: 8, type: 'creeper' }, { col: 13, row: 8, type: 'creeper' }, { col: 17, row: 8, type: 'creeper' }, { col: 21, row: 8, type: 'creeper' }],
+        coins: [{ col: 7, row: 2 }, { col: 11, row: 3 }, { col: 16, row: 5 }, { col: 3, row: 5 }, { col: 20, row: 5 }],
+        playerStart: { x: 60, y: 270 }, enemyType: 'Creeping Women', enemyDesc: 'They crawl from the wallpaper — stomp them free!'
+      },
+      // LEVEL 9: A Clean Well-Lighted Place (Hemingway)
+      {
+        title: 'A Clean Well-Lighted Place', author: 'Ernest Hemingway', year: '1933',
+        courseNote: "Studied in Prof. Atanu's ENG Class",
+        quote: '"It was all a nothing and a man was nothing too."',
+        theme: 'tagore', bgTop: '#ffdf00', bgBottom: '#000000',
+        collectWord: ['LIGHT', 'DIGNITY', 'NADA', 'CAFE', 'SHADOW'],
+        collectColor: '#ffffff', collectEmoji: '☕',
+        deathMsg: '"Our nada who art in nada..."', stompMsg: '"He needs the light..."',
+        tiles: [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,2,3,2,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,2,2,2,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,3,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,5,6,_,_,_,_,_,_,_,_,5,6,_,_,_,_],[_,_,_,_,_,_,_,_,7,8,_,_,_,_,_,_,_,_,7,8,_,_,_,_],[1,1,1,1,1,1,1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1]],
+        enemies: [{ col: 5, row: 8, type: 'heckler' }, { col: 9, row: 8, type: 'heckler' }, { col: 13, row: 8, type: 'heckler' }, { col: 17, row: 8, type: 'heckler' }, { col: 21, row: 8, type: 'heckler' }],
+        coins: [{ col: 3, row: 2 }, { col: 10, row: 3 }, { col: 15, row: 5 }, { col: 12, row: 3 }, { col: 20, row: 5 }],
+        playerStart: { x: 60, y: 270 }, enemyType: 'The Nada', enemyDesc: 'The darkness of nothingness.'
+      },
+      // LEVEL 10: Hills Like White Elephants (Hemingway)
       {
         title: 'Hills Like White Elephants', author: 'Ernest Hemingway', year: '1927',
         courseNote: "Studied in Prof. Atanu's ENG Class",
@@ -429,27 +423,41 @@
         theme: 'dylan', bgTop: '#e8c870', bgBottom: '#b89040',
         collectWord: ['ICEBERG', 'SILENCE', 'CHOICE', 'SUBTEXT', 'UNSPOKEN', 'TENSION'],
         collectColor: '#f0d080', collectEmoji: '🐘',
-        deathMsg: '"We\'ll be fine afterward." — Keep going!',
-        stompMsg: '"Nothing is simple." — Stomp!',
-        tiles: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 8, 0, 0, 0, 0, 0, 0, 0, 0, 7, 8, 0], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1]],
+        deathMsg: '"We\'ll be fine afterward." — Keep going!', stompMsg: '"Nothing is simple." — Stomp!',
+        tiles: [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0],[0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,5,6,0,0,0,0,0,0,0,0,5,6,0],[0,0,0,0,0,0,0,0,0,0,0,7,8,0,0,0,0,0,0,0,0,7,8,0],[1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1]],
         enemies: [{ col: 5, row: 8, type: 'fear' }, { col: 9, row: 8, type: 'fear' }, { col: 16, row: 8, type: 'fear' }, { col: 20, row: 8, type: 'fear' }],
         coins: [{ col: 4, row: 2 }, { col: 19, row: 2 }, { col: 8, row: 3 }, { col: 13, row: 4 }, { col: 15, row: 4 }],
         playerStart: { x: 60, y: 220 }, enemyType: 'Unsaid Things', enemyDesc: 'What is never spoken!'
       },
+      // LEVEL 11: Interpreter of Maladies (Lahiri)
       {
-        title: 'Lady Lazarus', author: 'Sylvia Plath', year: '1962',
+        title: 'Interpreter of Maladies', author: 'Jhumpa Lahiri', year: '1999',
         courseNote: "Studied in Prof. Atanu's ENG Class",
-        quote: '"Out of the ash / I rise with my red hair / And I eat men like air."',
-        theme: 'dylan', bgTop: '#1a0000', bgBottom: '#3d0000',
-        collectWord: ['RISE', 'FIRE', 'ASH', 'PHOENIX', 'REBIRTH', 'RAGE', 'TRIUMPH'],
-        collectColor: '#ff6600', collectEmoji: '🔥',
-        deathMsg: '"Dying is an art." — Try again!',
-        stompMsg: '"Out of the ash, I rise!"',
-        tiles: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1], [1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1]],
-        enemies: [{ col: 4, row: 8, type: 'fear' }, { col: 8, row: 8, type: 'fear' }, { col: 12, row: 8, type: 'fear' }, { col: 17, row: 8, type: 'fear' }],
+        quote: '"Is it really pain you feel, Mrs. Das, or is it guilt?"',
+        theme: 'hughes', bgTop: '#ff8c00', bgBottom: '#008080',
+        collectWord: ['SECRETS', 'DISTANCE', 'SIGHT', 'CAMERA', 'CULTURE'],
+        collectColor: '#ffa500', collectEmoji: '📷',
+        deathMsg: 'Lost in translation...', stompMsg: '"The monkeys are everywhere..."',
+        tiles: [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,3,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,2,2,_,_,_,_,_,3,_,3,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,2,2,2,_],[_,_,_,_,_,_,_,_,_,_,_,5,6,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,7,8,_,_,_,_,_,_,_,_,_,_,_],[1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1,_,_,1,1,1,1],[1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1,_,_,1,1,1,1],[1,1,1,1,_,_,1,1,1,1,1,1,1,1,1,1,1,1,_,_,1,1,1,1]],
+        enemies: [{ col: 6, row: 8, type: 'heckler' }, { col: 10, row: 8, type: 'heckler' }, { col: 14, row: 8, type: 'heckler' }, { col: 20, row: 8, type: 'heckler' }],
+        coins: [{ col: 5, row: 2 }, { col: 8, row: 3 }, { col: 15, row: 3 }, { col: 17, row: 3 }, { col: 21, row: 5 }],
+        playerStart: { x: 60, y: 270 }, enemyType: 'Miscommunications', enemyDesc: 'Guilt and secrets block the way.'
+      },
+      // LEVEL 12: Death of a Salesman (Miller)
+      {
+        title: 'Death of a Salesman', author: 'Arthur Miller', year: '1949',
+        courseNote: "Studied in Prof. Atanu's ENG Class",
+        quote: '"He had the wrong dreams. All, all, wrong."',
+        theme: 'wallpaper', bgTop: '#8fbc8f', bgBottom: '#696969',
+        collectWord: ['DREAM', 'DIME', 'SUCCESS', 'ILLUSION', 'TRAGEDY'],
+        collectColor: '#98fb98', collectEmoji: '💼',
+        deathMsg: '"I\'m a dime a dozen, and so are you!"', stompMsg: '"I am not a dime a dozen!"',
+        tiles: [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,3,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,3,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,2,2,2,_,_,_,_,_,_,2,2,2,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,2,2,_,_,_,_,_,_,_,_,2,2,_,_,_,_,_,_,2,2,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],[1,1,1,_,_,1,1,1,1,_,_,1,1,1,1,_,_,1,1,1,1,_,_,1],[1,1,1,_,_,1,1,1,1,_,_,1,1,1,1,_,_,1,1,1,1,_,_,1],[1,1,1,_,_,1,1,1,1,_,_,1,1,1,1,_,_,1,1,1,1,_,_,1]],
+        enemies: [{ col: 4, row: 8, type: 'creeper' }, { col: 8, row: 8, type: 'creeper' }, { col: 12, row: 8, type: 'creeper' }, { col: 17, row: 8, type: 'creeper' }],
         coins: [{ col: 3, row: 1 }, { col: 21, row: 1 }, { col: 6, row: 3 }, { col: 15, row: 3 }, { col: 12, row: 5 }],
-        playerStart: { x: 60, y: 220 }, enemyType: 'Ash Men', enemyDesc: 'Rise from the ash!'
-      }];
+        playerStart: { x: 60, y: 220 }, enemyType: 'False Dreams', enemyDesc: 'The crushing weight of illusion.'
+      }
+    ];
 
     // ════════════════════════════════════════════════════════
     //  GAME STATE

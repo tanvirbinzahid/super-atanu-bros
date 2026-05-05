@@ -72,6 +72,13 @@ canvas{display:block;image-rendering:pixelated;}
 </style>
 </head>
 <body>
+<div id="rotateOverlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#0a0a1a;z-index:9999;flex-direction:column;align-items:center;justify-content:center;gap:20px;">
+  <div style="font-size:64px;animation:spin 2s linear infinite;">📱</div>
+  <div style="color:#ffd700;font-family:'Press Start 2P',monospace;font-size:12px;text-align:center;line-height:2;">Please rotate<br>your phone<br>to landscape!</div>
+</div>
+<style>
+@keyframes spin{0%{transform:rotate(0deg);}50%{transform:rotate(90deg);}100%{transform:rotate(0deg);}}
+</style>
 <div id="wrap">
   <div id="hud">
     <span id="hudCourse">📝 ENG — Prof. Atanu</span>
@@ -1244,44 +1251,18 @@ function loop(ts){
 // ─── Responsive Scaling ──────────────────────────────────
 function scaleCanvas(){
   const wrap=document.getElementById('wrap');
-  const mc=document.getElementById('mobileControls');
-  const isTouch=(navigator.maxTouchPoints>0);
-  const W_GAME=800,H_GAME=484; // 440 canvas + 44 HUD
   const vw=window.innerWidth,vh=window.innerHeight;
   const isPortrait=vh>vw;
-  if(isTouch&&isPortrait){
-    const btnH=160;
-    const availW=vw;
-    const availH=vh-btnH;
-    // After -90deg rotation: game width(800) → screen height, game height(484) → screen width
-    const scaleByW=availW/H_GAME;
-    const scaleByH=availH/W_GAME;
-    const scale=Math.min(scaleByW,scaleByH);
-    // Position: center horizontally and vertically in available space
-    const scaledW=H_GAME*scale; // actual rendered width after rotation
-    const scaledH=W_GAME*scale; // actual rendered height after rotation
-    const leftOffset=(vw-scaledW)/2;
-    const topOffset=(availH-scaledH)/2;
-    wrap.style.position='fixed';
-    wrap.style.left=leftOffset+'px';
-    wrap.style.top=topOffset+'px';
-    wrap.style.transformOrigin='top left';
-    wrap.style.transform='rotate(-90deg) translateX(-'+H_GAME+'px) scale('+scale+')';
-    wrap.style.marginBottom='0';
-    wrap.style.marginTop='0';
-    mc.style.display='block';
-  } else {
-    const maxW=Math.min(vw-6,800);
-    const scale=maxW/800;
-    wrap.style.transform='scale('+scale+')';
-    wrap.style.transformOrigin='top center';
-    wrap.style.position='';
-    wrap.style.top='';
-    wrap.style.left='';
-    wrap.style.marginBottom=(H_GAME*(scale-1))+'px';
-    wrap.style.marginTop='';
-    wrap.style.fixed='';
-  }
+  const rotateOverlay=document.getElementById('rotateOverlay');
+  if(rotateOverlay){rotateOverlay.style.display=(navigator.maxTouchPoints>0&&isPortrait)?'flex':'none';}
+  const maxW=Math.min(vw-6,800);
+  const scale=maxW/800;
+  wrap.style.transform='scale('+scale+')';
+  wrap.style.transformOrigin='top center';
+  wrap.style.position='';
+  wrap.style.top='';wrap.style.left='';
+  wrap.style.marginBottom=((440+44)*(scale-1))+'px';
+  wrap.style.marginTop='';
 }
 window.addEventListener('resize',scaleCanvas);
 window.addEventListener('orientationchange',()=>{setTimeout(scaleCanvas,150);});

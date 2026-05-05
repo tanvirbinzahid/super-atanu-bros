@@ -1254,22 +1254,22 @@ function scaleCanvas(){
   const oy=vv?vv.offsetTop:0;
   const isMobile=(navigator.maxTouchPoints>0);
   const isPortrait=(vh>vw);
+  const gameW=800, gameH=484;
 
   if(isMobile && isPortrait){
-    const gameW=800, gameH=484;
-    const btnH=118;
-    const gap=10;
-    const scale=Math.min(vw/gameH,(vh-btnH-gap)/gameW);
-    const visualW=gameH*scale;
-    const visualH=gameW*scale;
-    const left=ox+(vw-visualW)/2;
-    const top=oy+Math.max(8,(vh-btnH-gap-visualH)/2);
+    const btnH=132;
+    const gap=12;
+    const availW=vw-8;
+    const availH=vh-btnH-gap-8;
+    const scale=Math.min(availW/gameW, availH/gameH, 1);
+    const left=ox+(vw-gameW*scale)/2;
+    const top=oy+Math.max(6,(availH-gameH*scale)/2);
 
     wrap.style.position='fixed';
     wrap.style.left=left+'px';
     wrap.style.top=top+'px';
     wrap.style.transformOrigin='top left';
-    wrap.style.transform='scale('+scale+') rotate(-90deg) translateX(-484px)';
+    wrap.style.transform='scale('+scale+')';
     wrap.style.marginBottom='0';
     wrap.style.zIndex='1';
 
@@ -1285,9 +1285,9 @@ function scaleCanvas(){
     wrap.style.left='';
     wrap.style.top='';
     wrap.style.transformOrigin='top center';
-    const scale=Math.min((vw-6)/800,1);
+    const scale=Math.min((vw-6)/gameW, 1);
     wrap.style.transform='scale('+scale+')';
-    wrap.style.marginBottom=((484)*(scale-1))+'px';
+    wrap.style.marginBottom=(gameH*(scale-1))+'px';
     wrap.style.zIndex='';
 
     mc.style.position='fixed';

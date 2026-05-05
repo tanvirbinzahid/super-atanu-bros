@@ -1247,50 +1247,61 @@ function loop(ts){
 function scaleCanvas(){
   const wrap=document.getElementById('wrap');
   const mc=document.getElementById('mobileControls');
-  const vw=window.innerWidth, vh=window.innerHeight;
+  const vv=window.visualViewport;
+  const vw=vv?vv.width:window.innerWidth;
+  const vh=vv?vv.height:window.innerHeight;
+  const ox=vv?vv.offsetLeft:0;
+  const oy=vv?vv.offsetTop:0;
   const isMobile=(navigator.maxTouchPoints>0);
   const isPortrait=(vh>vw);
 
   if(isMobile && isPortrait){
-    const btnH=130;
-    const availH=vh-btnH;
-    // After -90deg: 800 becomes visual height, 484 becomes visual width
-    const scale=Math.min(vw/484, availH/800);
-    const visualW=484*scale;  // fits portrait width
-    const visualH=800*scale;  // fits available height
+    const gameW=800, gameH=484;
+    const btnH=118;
+    const gap=10;
+    const scale=Math.min(vw/gameH,(vh-btnH-gap)/gameW);
+    const visualW=gameH*scale;
+    const visualH=gameW*scale;
+    const left=ox+(vw-visualW)/2;
+    const top=oy+Math.max(8,(vh-btnH-gap-visualH)/2);
 
-    // Center the rotated element
-    const cx=vw/2;
-    const cy=availH/2;
-
-    // transformOrigin = center of original (unscaled) element
-    // original center = (400, 242)
-    // place top-left so that after rotation center lands at (cx,cy)
     wrap.style.position='fixed';
-    wrap.style.left=(cx - 242*scale)+'px';
-    wrap.style.top=(cy - 400*scale)+'px';
+    wrap.style.left=left+'px';
+    wrap.style.top=top+'px';
     wrap.style.transformOrigin='top left';
     wrap.style.transform='scale('+scale+') rotate(-90deg) translateX(-484px)';
     wrap.style.marginBottom='0';
     wrap.style.zIndex='1';
 
     mc.style.position='fixed';
-    mc.style.bottom='0';
     mc.style.left='0';
     mc.style.right='0';
+    mc.style.bottom='max(8px, env(safe-area-inset-bottom))';
     mc.style.height=btnH+'px';
     mc.style.display='block';
+    mc.style.zIndex='5';
   } else {
-    wrap.style.cssText='';
-    const scale=Math.min((vw-6)/800, 1);
-    wrap.style.transform='scale('+scale+')';
+    wrap.style.position='';
+    wrap.style.left='';
+    wrap.style.top='';
     wrap.style.transformOrigin='top center';
+    const scale=Math.min((vw-6)/800,1);
+    wrap.style.transform='scale('+scale+')';
     wrap.style.marginBottom=((484)*(scale-1))+'px';
-    mc.style.cssText='';
+    wrap.style.zIndex='';
+
+    mc.style.position='fixed';
+    mc.style.left='0';
+    mc.style.right='0';
+    mc.style.bottom='0';
+    mc.style.height='140px';
+    mc.style.display='';
+    mc.style.zIndex='100';
   }
 }
 window.addEventListener('resize',scaleCanvas);
-window.addEventListener('orientationchange',()=>{setTimeout(scaleCanvas,200);});
+if(window.visualViewport){window.visualViewport.addEventListener('resize',scaleCanvas);window.visualViewport.addEventListener('scroll',scaleCanvas);} 
+window.addEventListener('orientationchange',()=>{setTimeout(scaleCanvas,250);});
 scaleCanvas();
 
 requestAnimationFrame(loop);

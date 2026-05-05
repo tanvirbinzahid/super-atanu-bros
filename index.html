@@ -36,11 +36,11 @@ canvas{display:block;image-rendering:pixelated;}
 /* Mobile controls */
 #mobileControls{
   display:none;
-  position:absolute;
+  position:fixed;
   bottom:0;left:0;right:0;
   height:140px;
   pointer-events:none;
-  z-index:20;
+  z-index:100;
 }
 .mBtn{
   position:absolute;
@@ -79,12 +79,12 @@ canvas{display:block;image-rendering:pixelated;}
     <span id="hudCoins">📖 0</span>
   </div>
   <canvas id="c" width="800" height="440"></canvas>
-  <div id="mobileControls">
+</div>
+<div id="mobileControls">
     <div class="mBtn" id="btnLeft">◀</div>
     <div class="mBtn" id="btnRight">▶</div>
     <div class="mBtn" id="btnJump"><span>🅰</span><span style="font-size:0.5rem">JUMP</span></div>
   </div>
-</div>
 <div id="controls">← → / WASD move &nbsp;|&nbsp; SPACE / ↑ jump &nbsp;|&nbsp; Stomp enemies &nbsp;|&nbsp; Collect literary words!</div>
 
 <script>
@@ -434,7 +434,7 @@ function loadLevel(idx){
     type:e.type,animT:0,
   }));
   coinObjs=L.coins.map((c,i)=>({
-    x:c.col*TILE+TILE/2,y:c.row*TILE+TILE/2,
+    x:c.col*TILE+TILE/2,y:(c.row-1)*TILE+TILE/2,
     r:11,collected:false,
     bobOff:i*0.9,
     word:L.collectWord[i%L.collectWord.length],
@@ -1196,6 +1196,7 @@ function loop(ts){
     updateParticles(dt);
     drawBgByTheme(ox);drawTiles(ox);drawFlagPole(ox);
     drawCoins(ox);drawParticles(ox);drawEnemies(ox);
+    drawPlayer(ox);
     updateFloats(dt);drawFloats(ox);
     drawQuoteFlash();
     drawDeadOverlay();
@@ -1240,14 +1241,43 @@ function loop(ts){
 
 // ─── Responsive Scaling ──────────────────────────────────
 function scaleCanvas(){
-  const maxW=Math.min(window.innerWidth-6,800);
-  const scale=maxW/800;
   const wrap=document.getElementById('wrap');
-  wrap.style.transform='scale('+scale+')';
-  wrap.style.transformOrigin='top center';
-  wrap.style.marginBottom=((440+44)*(scale-1))+'px';
+  const mc=document.getElementById('mobileControls');
+  const isTouch=(navigator.maxTouchPoints>0);
+  const W_GAME=800,H_GAME=440;
+  const vw=window.innerWidth,vh=window.innerHeight;
+  const isPortrait=vh>vw;
+  if(isTouch&&isPortrait){
+    // Rotate -90deg: game's 800 maps to screen height, 440 maps to screen width
+    const btnH=150;
+    const availH=vh-btnH;
+    const scaleW=vw/H_GAME;
+    const scaleH=availH/W_GAME;
+    const scale=Math.min(scaleW,scaleH);
+    const offsetY=(vh-(W_GAME*scale))/2-btnH/4;
+    wrap.style.transform='rotate(-90deg) scale('+scale+')';
+    wrap.style.transformOrigin='center center';
+    wrap.style.position='absolute';
+    wrap.style.top=offsetY+'px';
+    wrap.style.left=(vw-H_GAME*scale)/2+'px';
+    wrap.style.marginBottom='0';
+    wrap.style.marginTop='0';
+    mc.style.height='140px';
+  } else {
+    const maxW=Math.min(vw-6,800);
+    const scale=maxW/800;
+    wrap.style.transform='scale('+scale+')';
+    wrap.style.transformOrigin='top center';
+    wrap.style.position='';
+    wrap.style.top='';
+    wrap.style.left='';
+    wrap.style.marginBottom=((H_GAME+44)*(scale-1))+'px';
+    wrap.style.marginTop='';
+  }
 }
-window.addEventListener('resize',scaleCanvas);scaleCanvas();
+window.addEventListener('resize',scaleCanvas);
+window.addEventListener('orientationchange',()=>{setTimeout(scaleCanvas,100);});
+scaleCanvas();
 
 requestAnimationFrame(loop);
 </script>

@@ -1247,61 +1247,45 @@ function loop(ts){
 function scaleCanvas(){
   const wrap=document.getElementById('wrap');
   const mc=document.getElementById('mobileControls');
-  const vv=window.visualViewport;
-  const vw=vv?vv.width:window.innerWidth;
-  const vh=vv?vv.height:window.innerHeight;
-  const ox=vv?vv.offsetLeft:0;
-  const oy=vv?vv.offsetTop:0;
+  const vw=window.innerWidth;
+  const vh=window.innerHeight;
   const isMobile=(navigator.maxTouchPoints>0);
   const isPortrait=(vh>vw);
-  const gameW=800, gameH=484;
 
+  // Always scale wrap to fit screen width
+  const scale=Math.min(vw/806, 1);
+  wrap.style.transform='scale('+scale+')';
+  wrap.style.transformOrigin='top center';
+  wrap.style.position='';
+  wrap.style.left='';
+  wrap.style.top='';
+  wrap.style.marginBottom=(484*(scale-1))+'px';
+  wrap.style.zIndex='';
+
+  // On portrait mobile, center vertically
   if(isMobile && isPortrait){
-    const btnH=132;
-    const gap=12;
-    const availW=vw-8;
-    const availH=vh-btnH-gap-8;
-    const scale=Math.min(availW/gameW, availH/gameH, 1);
-    const left=ox+(vw-gameW*scale)/2;
-    const top=oy+Math.max(6,(availH-gameH*scale)/2);
-
-    wrap.style.position='fixed';
-    wrap.style.left=left+'px';
-    wrap.style.top=top+'px';
-    wrap.style.transformOrigin='top left';
-    wrap.style.transform='scale('+scale+')';
-    wrap.style.marginBottom='0';
-    wrap.style.zIndex='1';
-
+    const scaledH=484*scale;
+    const btnH=140;
+    const topPad=Math.max(8, (vh - scaledH - btnH)/2);
+    wrap.style.marginTop=topPad+'px';
     mc.style.position='fixed';
+    mc.style.bottom='0';
     mc.style.left='0';
     mc.style.right='0';
-    mc.style.bottom='max(8px, env(safe-area-inset-bottom))';
     mc.style.height=btnH+'px';
     mc.style.display='block';
-    mc.style.zIndex='5';
+    mc.style.zIndex='100';
   } else {
-    wrap.style.position='';
-    wrap.style.left='';
-    wrap.style.top='';
-    wrap.style.transformOrigin='top center';
-    const scale=Math.min((vw-6)/gameW, 1);
-    wrap.style.transform='scale('+scale+')';
-    wrap.style.marginBottom=(gameH*(scale-1))+'px';
-    wrap.style.zIndex='';
-
-    mc.style.position='fixed';
-    mc.style.left='0';
-    mc.style.right='0';
-    mc.style.bottom='0';
+    wrap.style.marginTop='';
+    mc.style.position='';
+    mc.style.bottom='';
     mc.style.height='140px';
     mc.style.display='';
     mc.style.zIndex='100';
   }
 }
 window.addEventListener('resize',scaleCanvas);
-if(window.visualViewport){window.visualViewport.addEventListener('resize',scaleCanvas);window.visualViewport.addEventListener('scroll',scaleCanvas);} 
-window.addEventListener('orientationchange',()=>{setTimeout(scaleCanvas,250);});
+window.addEventListener('orientationchange',()=>{setTimeout(scaleCanvas,200);});
 scaleCanvas();
 
 requestAnimationFrame(loop);

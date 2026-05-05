@@ -1324,49 +1324,109 @@
     }
 
     // ─── Responsive Scaling ──────────────────────────────────
-    function scaleCanvas() {
+    function scaleCanvas(){
+      let container = document.getElementById('gameContainer');
       const wrap = document.getElementById('wrap');
       const mc = document.getElementById('mobileControls');
-      const vw = window.innerWidth, vh = window.innerHeight;
-      const isMobile = (navigator.maxTouchPoints > 0);
+      const controls = document.getElementById('controls');
+      const hud = document.getElementById('hud');
+      
+      if (!container) {
+        container = document.createElement('div');
+        container.id = 'gameContainer';
+        container.style.position = 'fixed';
+        container.style.top = '0';
+        container.style.left = '0';
+        container.style.transformOrigin = '0 0';
+        container.style.display = 'block';
+        container.style.overflow = 'hidden';
+        container.style.background = '#0a0a1a';
+        document.body.appendChild(container);
+        container.appendChild(wrap);
+        container.appendChild(mc);
+        if (controls) container.appendChild(controls);
+      }
+
+      if (hud) {
+        hud.style.flexDirection = 'row';
+        hud.style.width = '100%';
+        hud.style.boxSizing = 'border-box';
+      }
+
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const isMobile = (navigator.maxTouchPoints > 0) || vw <= 820;
       const isPortrait = (vh > vw);
 
+      let availW = vw;
+      let availH = vh;
+
       if (isMobile && isPortrait) {
-        const btnH = 130;
-        const availH = vh - btnH;
-        // After -90deg: 800 becomes visual height, 484 becomes visual width
-        const scale = Math.min(vw / 484, availH / 800);
-        const visualW = 484 * scale;  // fits portrait width
-        const visualH = 800 * scale;  // fits available height
+        container.style.width = vh + 'px';
+        container.style.height = vw + 'px';
+        container.style.transform = `rotate(90deg) translateY(-100%)`;
+        availW = vh;
+        availH = vw;
+      } else {
+        container.style.width = vw + 'px';
+        container.style.height = vh + 'px';
+        container.style.transform = 'none';
+        availW = vw;
+        availH = vh;
+      }
 
-        // Center the rotated element
-        const cx = vw / 2;
-        const cy = availH / 2;
+      const GAME_W = 800;
+      const GAME_H = 470;
 
-        // transformOrigin = center of original (unscaled) element
-        // original center = (400, 242)
-        // place top-left so that after rotation center lands at (cx,cy)
-        wrap.style.position = 'fixed';
-        wrap.style.left = (cx - 242 * scale) + 'px';
-        wrap.style.top = (cy - 400 * scale) + 'px';
-        wrap.style.transformOrigin = 'top left';
-        wrap.style.transform = 'scale(' + scale + ') rotate(-90deg) translateX(-484px)';
-        wrap.style.marginBottom = '0';
-        wrap.style.zIndex = '1';
+      const scaleW = availW / GAME_W;
+      const scaleH = availH / GAME_H;
+      const scale = Math.max(0.1, Math.min(scaleW, scaleH, 1));
 
-        mc.style.position = 'fixed';
-        mc.style.bottom = '0';
+      const scaledW = GAME_W * scale;
+      const scaledH = GAME_H * scale;
+
+      wrap.style.cssText = '';
+      wrap.style.position = 'absolute';
+      wrap.style.margin = '0';
+      wrap.style.width = GAME_W + 'px';
+      wrap.style.height = GAME_H + 'px';
+      wrap.style.left = ((availW - scaledW) / 2) + 'px';
+      wrap.style.top = ((availH - scaledH) / 2) + 'px';
+      wrap.style.transformOrigin = '0 0';
+      wrap.style.transform = `scale(${scale})`;
+      wrap.style.zIndex = '1';
+
+      if (isMobile) {
+        mc.style.cssText = '';
+        mc.style.position = 'absolute';
+        mc.style.bottom = '10px';
         mc.style.left = '0';
         mc.style.right = '0';
-        mc.style.height = btnH + 'px';
+        mc.style.height = '100px';
         mc.style.display = 'block';
+        mc.style.zIndex = '100';
+        mc.style.pointerEvents = 'none';
+        
+        const btnL = document.getElementById('btnLeft');
+        const btnR = document.getElementById('btnRight');
+        const btnJ = document.getElementById('btnJump');
+        if(btnL) { btnL.style.bottom = '10px'; btnL.style.pointerEvents = 'auto'; }
+        if(btnR) { btnR.style.bottom = '10px'; btnR.style.pointerEvents = 'auto'; }
+        if(btnJ) { btnJ.style.bottom = '10px'; btnJ.style.pointerEvents = 'auto'; }
       } else {
-        wrap.style.cssText = '';
-        const scale = Math.min((vw - 6) / 800, 1);
-        wrap.style.transform = 'scale(' + scale + ')';
-        wrap.style.transformOrigin = 'top center';
-        wrap.style.marginBottom = ((484) * (scale - 1)) + 'px';
-        mc.style.cssText = '';
+        mc.style.display = 'none';
+      }
+
+      if (controls) {
+        if (isMobile) {
+          controls.style.display = 'none';
+        } else {
+          controls.style.display = 'block';
+          controls.style.position = 'absolute';
+          controls.style.bottom = '10px';
+          controls.style.width = '100%';
+          controls.style.textAlign = 'center';
+        }
       }
     }
     window.addEventListener('resize', scaleCanvas);
